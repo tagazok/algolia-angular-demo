@@ -7,16 +7,16 @@ The data store used is the same as the official <a href="https://community.algol
 ## Screenshots
 
 <div align="center">
-  <p>
-  <img src="http://oleplus.free.fr/screenshots/algolia-computer-full.png" alt="Screenshot" />
+  <img src="http://oleplus.free.fr/screenshots/algolia-computer-full.png" alt="Screenshot" /><br />
   Chrome
-  </p>
-  <p>
-  <img src="http://oleplus.free.fr/screenshots/algolia-ipad.png" alt="Ipad" />
-  Ipad
-  </p>
-  <p>
-  <img src="http://oleplus.free.fr/screenshots/algolia-android.png" alt="Nexus 5X" />
-  Nexus 5X
-  </p>
+  <table>
+    <tr>
+      <td align="center">
+        <img src="http://oleplus.free.fr/screenshots/algolia-ipad.png" alt="Ipad" /><br /> Ipad
+      </td>
+      <td align="center">
+        <img src="http://oleplus.free.fr/screenshots/algolia-android.png" alt="Nexus 5X" /><br /> Nexus 5X
+      </td>
+    </tr>
+  </table>
 </div>
