@@ -8,7 +8,7 @@ import { AlgoliaService } from '@tagazok/algolia-angular-components';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class DemoComponent {
   title = 'app works!';
   sortIndices = [];
 

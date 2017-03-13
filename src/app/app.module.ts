@@ -7,11 +7,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
 import { AlgoliaModule, AlgoliaService } from '@tagazok/algolia-angular-components'
 
-import { AppComponent } from './app.component';
+import { DemoComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    DemoComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +22,6 @@ import { AppComponent } from './app.component';
     MaterialModule.forRoot()
   ],
   providers: [AlgoliaService],
-  bootstrap: [AppComponent]
+  bootstrap: [DemoComponent]
 })
-export class AppModule { }
+export class DemoModule { }
