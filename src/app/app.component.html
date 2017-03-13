@@ -1,3 +1,92 @@
-<h1>
-  {{title}}
-</h1>
+<md-toolbar class="my-toolbar">
+  <div fxLayoutAlign="center center" class="toolbar-logo">
+    <img class="logo" src="/assets/images/logo-is.png">
+  </div>
+  <div class="menu-icon" (click)="sidenav.toggle()">☰</div>
+</md-toolbar>
+
+<md-sidenav-container>
+  <md-sidenav #sidenav class="main-sidenav" [opened]="!isScreenSmall()" [mode]="isScreenSmall() ? 'over' : 'side'">
+
+    <div fxLayout="column" style="padding: 20px;">
+      <div class="facet-wrapper">
+        <p class="facet-title">Show results for</p>
+        <app-algolia-facets [attribute]="'category'">
+
+          <!--Facet template-->
+          <template let-item="item">
+            ❯ {{item.key}}
+          </template>
+
+        </app-algolia-facets>
+      </div>
+
+      <div class="facet-wrapper">
+        <p class="facet-title">Refine by</p>
+        <!--TODO : Component for sub, ...-->
+        <app-algolia-facets [attribute]="'materials'" [label]="'Material'" [limit]="'10'" [selectedcssclass]="'selected-filter'">
+
+          <!--Search item result template-->
+          <template let-item="item">
+            {{item.key}} <span class="facet-val">({{item.val}})</span>
+          </template>
+
+        </app-algolia-facets>
+        <app-algolia-facets [attribute]="'colors'" [label]="'Colors'" [selectedcssclass]="'selected-color-filter'">
+
+          <!--Search item result template-->
+          <template let-item="item">
+            <div class="facet-color" [attr.data-facet-value]="item.key">&nbsp;</div>
+          </template>
+
+        </app-algolia-facets>
+        <app-algolia-facets [attribute]="'rating'" [label]="'Rating'">
+
+          <!--Search item result template-->
+          <template let-item="item">
+            <app-algolia-stars [value]="item.key" [min]="1" [max]="5" class="rating-color"></app-algolia-stars>
+            <span class="facet-val">({{item.val}})</span>
+          </template>
+          
+        </app-algolia-facets>
+        <!--TODO : Component just for price ?-->
+        <!--<app-algolia-facets [attribute]="'price'" [label]="'Prices'"></app-algolia-facets>-->
+      </div>
+    </div>
+
+  </md-sidenav>
+  <div fxLayout="column">
+    <div fxLayout="row">
+      <app-algolia-search [index]="'ikea'" [hitsPerPage]="12" [placeHolder]="'Search a product...'" fxFlex></app-algolia-search>
+      <!--<app-algolia-sort [indices]="sortIndices" [label]="'Sort by'"></app-algolia-sort>-->
+    </div>
+    <app-algolia-stats class="my-stats"></app-algolia-stats>
+    <div fxFlex>
+      <app-algolia-results fxLayoutAlign="space-around" fxLayout="row" fxLayoutWrap="wrap" fxFlexAlign="center">
+
+        <!--Search item result template-->
+        <template let-item="item">
+          <div class="my-item col-width" fxLayout="column">
+            <div class="my-card">
+              <div>
+                <img class="my-card-image" [src]="item.image">
+              </div>
+              <div class="my-card-content" fxFlex>
+                <div fxFill fxLayout="row">
+                  <div class="truncate product-name">{{item.name}}</div>
+                  <div class="product-price">${{item.price}}</div>
+                </div>
+                <div class="truncate product-type">{{item.type}}</div>
+                <div class="product-rating rating-color">
+                  <app-algolia-stars [value]="item.rating" [min]="1" [max]="5"></app-algolia-stars>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+
+      </app-algolia-results>
+      <app-algolia-pagination [padding]="3" fxLayout="row" fxLayoutAlign="center center"></app-algolia-pagination>
+    </div>
+  </div>
+</md-sidenav-container>
